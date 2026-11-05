@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,51 +16,95 @@
       box-sizing: border-box;
     }
 
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      font-family: Arial, Helvetica, sans-serif;
+    html {
+      min-height: 100%;
     }
 
     body {
       min-height: 100vh;
       min-height: 100dvh;
+      width: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+      font-family: Arial, Helvetica, sans-serif;
       color: white;
-
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.15),
-          rgba(0, 0, 0, 0.40)
-        ),
-        url("mofarity-background.jpg") center center / cover no-repeat;
+      background: #000;
+      isolation: isolate;
     }
 
-    .page {
+    /* BACKGROUND IMAGE */
+    .background {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      background: #000;
+      touch-action: none;
+      cursor: grab;
+    }
+
+    .background:active {
+      cursor: grabbing;
+    }
+
+    .background img {
       width: 100%;
-      height: 100vh;
-      height: 100dvh;
+      height: 100%;
+      object-fit: cover;
+      object-position: var(--bg-x, 50%) var(--bg-y, 50%);
+      display: block;
+      user-select: none;
+      -webkit-user-drag: none;
+      pointer-events: none;
+    }
+
+    .background::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.40)
+      );
+      pointer-events: none;
+    }
+
+    /* MAIN PAGE */
+    .page {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       padding: 35px 6%;
+      gap: 30px;
     }
 
+    /* HEADER */
     header {
       font-size: 17px;
       font-weight: 900;
       letter-spacing: 5px;
+      color: #24A9E0;
+      flex-shrink: 0;
     }
 
+    /* MAIN CONTENT */
     main {
       width: 50%;
       margin-left: auto;
+      margin-top: auto;
+      margin-bottom: auto;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
+      padding: 25px 0;
     }
 
     h1 {
@@ -71,13 +116,15 @@
     }
 
     .byline {
-      font-size: 12px;
-      font-weight: bold;
+      font-size: 13px;
+      font-weight: 900;
       letter-spacing: 4px;
-      margin-top: 12px;
+      margin-top: 14px;
       color: #24A9E0;
+      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.35);
     }
 
+    /* MUSIC PLATFORMS */
     .music-platforms {
       display: flex;
       align-items: center;
@@ -93,6 +140,7 @@
       align-items: center;
       justify-content: center;
       transition: transform 0.2s ease;
+      flex-shrink: 0;
     }
 
     .music-platforms a:hover {
@@ -102,7 +150,19 @@
     .music-platforms svg {
       width: 100%;
       height: 100%;
-      fill: white;
+      display: block;
+    }
+
+    .spotify-icon {
+      fill: #1DB954;
+    }
+
+    .youtube-music-icon {
+      fill: #FF0000;
+    }
+
+    .youtube-icon {
+      fill: #FF0033;
     }
 
     .music-platforms img {
@@ -111,6 +171,7 @@
       object-fit: contain;
     }
 
+    /* BIOGRAPHY */
     .biography {
       display: inline-block;
       margin-top: 35px;
@@ -129,13 +190,16 @@
       color: black;
     }
 
+    /* FOOTER */
     footer {
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-wrap: wrap;
       gap: 30px;
       font-size: 10px;
       letter-spacing: 2px;
+      flex-shrink: 0;
     }
 
     footer a {
@@ -148,9 +212,11 @@
       opacity: 0.65;
     }
 
+    /* MOBILE */
     @media (max-width: 700px) {
       .page {
         padding: 25px 20px;
+        gap: 25px;
       }
 
       header {
@@ -159,11 +225,17 @@
 
       main {
         width: 100%;
+        padding: 30px 0;
       }
 
       h1 {
         font-size: clamp(48px, 13vw, 75px);
         letter-spacing: -3px;
+      }
+
+      .byline {
+        font-size: 13px;
+        letter-spacing: 3px;
       }
 
       .music-platforms {
@@ -181,10 +253,51 @@
         font-size: 9px;
       }
     }
+
+    /* SHORT SCREENS AND ROTATED PHONES */
+    @media (max-height: 500px) {
+      .page {
+        justify-content: flex-start;
+        gap: 20px;
+        padding-top: 18px;
+        padding-bottom: 18px;
+      }
+
+      main {
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 15px 0;
+      }
+
+      h1 {
+        font-size: clamp(38px, 7vw, 65px);
+      }
+
+      .music-platforms {
+        margin-top: 20px;
+      }
+
+      .biography {
+        margin-top: 20px;
+      }
+
+      footer {
+        margin-top: auto;
+      }
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- DRAGGABLE BACKGROUND -->
+  <div class="background" id="background">
+    <img
+      src="mofarity-background.jpg"
+      alt=""
+      draggable="false"
+    >
+  </div>
 
   <div class="page">
 
@@ -209,7 +322,8 @@
           rel="noopener noreferrer"
           aria-label="Spotify"
         >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"
+               class="spotify-icon">
             <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.49 17.307a.75.75 0 0 1-1.032.249c-2.826-1.727-6.385-2.118-10.576-1.16a.75.75 0 1 1-.334-1.462c4.587-1.048 8.52-.597 11.694 1.34a.75.75 0 0 1 .248 1.033zm1.47-3.27a.94.94 0 0 1-1.293.31c-3.235-1.99-8.17-2.567-11.998-1.404a.94.94 0 1 1-.547-1.798c4.374-1.327 9.81-.685 13.528 1.6a.94.94 0 0 1 .31 1.292zm.126-3.405C15.205 8.36 8.78 8.148 5.06 9.278a1.125 1.125 0 1 1-.654-2.153c4.27-1.296 11.37-1.045 15.84 1.61a1.125 1.125 0 0 1-1.16 1.93z"/>
           </svg>
         </a>
@@ -221,7 +335,8 @@
           rel="noopener noreferrer"
           aria-label="YouTube Music"
         >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"
+               class="youtube-music-icon">
             <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 18.2a6.2 6.2 0 1 1 0-12.4 6.2 6.2 0 0 1 0 12.4zm-1.4-9.1v5.8l4.7-2.9-4.7-2.9z"/>
           </svg>
         </a>
@@ -246,7 +361,8 @@
           rel="noopener noreferrer"
           aria-label="YouTube"
         >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"
+               class="youtube-icon">
             <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
           </svg>
         </a>
@@ -289,6 +405,59 @@
     </footer>
 
   </div>
+
+  <!-- BACKGROUND TOUCH AND MOUSE NAVIGATION -->
+  <script>
+    const background = document.getElementById("background");
+
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let currentX = 50;
+    let currentY = 50;
+
+    background.addEventListener("pointerdown", (event) => {
+      isDragging = true;
+
+      startX = event.clientX;
+      startY = event.clientY;
+
+      background.setPointerCapture(event.pointerId);
+    });
+
+    background.addEventListener("pointermove", (event) => {
+      if (!isDragging) return;
+
+      const deltaX = event.clientX - startX;
+      const deltaY = event.clientY - startY;
+
+      const rect = background.getBoundingClientRect();
+
+      currentX = Math.max(
+        0,
+        Math.min(100, currentX - (deltaX / rect.width) * 100)
+      );
+
+      currentY = Math.max(
+        0,
+        Math.min(100, currentY - (deltaY / rect.height) * 100)
+      );
+
+      background.querySelector("img").style.objectPosition =
+        `${currentX}% ${currentY}%`;
+
+      startX = event.clientX;
+      startY = event.clientY;
+    });
+
+    function stopDragging() {
+      isDragging = false;
+    }
+
+    background.addEventListener("pointerup", stopDragging);
+    background.addEventListener("pointercancel", stopDragging);
+    background.addEventListener("lostpointercapture", stopDragging);
+  </script>
 
 </body>
 </html>
