@@ -1,16 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#000000">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Mofarity</title>
 
-  <meta name="description" content="GEEKIN' by Mofarity. Listen now.">
-
-  <!-- FAVICON -->
   <link rel="icon" type="image/png" href="mofarity-favicon.png">
 
   <style>
@@ -24,16 +19,19 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      min-height: 100vh;
+      min-height: 100dvh;
       color: white;
+
       background:
         linear-gradient(
           to bottom,
-          rgba(0,0,0,0.15),
-          rgba(0,0,0,0.35)
+          rgba(0, 0, 0, 0.15),
+          rgba(0, 0, 0, 0.40)
         ),
         url("mofarity-background.jpg") center center / cover no-repeat;
     }
@@ -41,43 +39,34 @@
     .page {
       width: 100%;
       height: 100vh;
-      height: 100svh;
+      height: 100dvh;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 35px 5%;
+      padding: 35px 6%;
     }
-
-    /* HEADER */
 
     header {
-      text-align: center;
-    }
-
-    .logo-text {
-      color: white;
-      font-size: 15px;
-      font-weight: bold;
+      font-size: 17px;
+      font-weight: 900;
       letter-spacing: 5px;
-      text-decoration: none;
     }
-
-    /* MAIN CONTENT */
 
     main {
+      width: 50%;
+      margin-left: auto;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin-left: auto;
-      width: 50%;
     }
 
     h1 {
       font-size: clamp(45px, 7vw, 90px);
       font-weight: 900;
       letter-spacing: -4px;
+      line-height: 1;
       color: #24A9E0;
     }
 
@@ -89,20 +78,20 @@
       color: #24A9E0;
     }
 
-    /* MUSIC PLATFORM ICONS */
-
     .music-platforms {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 30px;
-      margin-top: 35px;
+      gap: 22px;
+      margin-top: 38px;
     }
 
     .music-platforms a {
-      display: flex;
       width: 38px;
       height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: transform 0.2s ease;
     }
 
@@ -113,21 +102,26 @@
     .music-platforms svg {
       width: 100%;
       height: 100%;
+      fill: white;
     }
 
-    /* BIOGRAPHY */
+    .music-platforms img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
 
     .biography {
       display: inline-block;
-      margin-top: 38px;
-      padding: 15px 30px;
+      margin-top: 35px;
+      padding: 13px 30px;
       border: 1px solid white;
       color: white;
       text-decoration: none;
       font-size: 11px;
       font-weight: bold;
-      letter-spacing: 2px;
-      transition: 0.2s;
+      letter-spacing: 3px;
+      transition: all 0.25s ease;
     }
 
     .biography:hover {
@@ -135,51 +129,46 @@
       color: black;
     }
 
-    /* FOOTER */
-
     footer {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 55px;
+      gap: 30px;
+      font-size: 10px;
+      letter-spacing: 2px;
     }
 
     footer a {
       color: white;
       text-decoration: none;
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
+      transition: opacity 0.2s ease;
     }
 
     footer a:hover {
       opacity: 0.65;
     }
 
-    /* MOBILE */
-
     @media (max-width: 700px) {
-
       .page {
-        padding: 25px 18px;
+        padding: 25px 20px;
       }
 
-      body {
-        background-position: 42% center;
+      header {
+        font-size: 14px;
       }
 
       main {
         width: 100%;
-        margin: 0;
       }
 
       h1 {
-        font-size: 58px;
+        font-size: clamp(48px, 13vw, 75px);
+        letter-spacing: -3px;
       }
 
       .music-platforms {
-        gap: 24px;
+        gap: 18px;
+        margin-top: 30px;
       }
 
       .music-platforms a {
@@ -188,15 +177,10 @@
       }
 
       footer {
-        gap: 22px;
-      }
-
-      footer a {
+        gap: 20px;
         font-size: 9px;
-        letter-spacing: 0.5px;
       }
     }
-
   </style>
 </head>
 
@@ -204,114 +188,102 @@
 
   <div class="page">
 
-    <!-- HEADER -->
-
     <header>
-      <a href="https://mofarity.com/" class="logo-text">
-        MOFARITY
-      </a>
+      MOFARITY
     </header>
-
-
-    <!-- MAIN SECTION -->
 
     <main>
 
       <h1>GEEKIN'</h1>
 
-      <p class="byline">
+      <div class="byline">
         BY MOFARITY
-      </p>
-
-
-      <!-- MUSIC PLATFORMS -->
+      </div>
 
       <div class="music-platforms">
 
         <!-- SPOTIFY -->
-
-        <a href="https://open.spotify.com/album/5nS7kijukEgPS9v8eAyZOo"
-           target="_blank" aria-label="Spotify">
-
-          <svg viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="12" fill="#1ED760"/>
-            <path d="M5.2 9.1c4.7-1.4 10.1-.9 13.7 1.3.5.3.7.9.4 1.4-.3.5-.9.6-1.4.3-3.1-1.9-7.9-2.3-12.1-1.1-.6.2-1.1-.1-1.3-.7-.1-.5.2-1 .7-1.2Zm.6 3.2c4-1.2 8.3-.8 11.4 1.1.4.3.6.8.3 1.2-.2.4-.8.6-1.2.3-2.7-1.6-6.5-2-10-.9-.5.1-.9-.1-1.1-.6-.1-.5.1-.9.6-1.1Zm.7 3.1c3.1-.9 6.2-.6 8.7.9.4.2.5.7.3 1-.2.4-.7.5-1 .3-2.1-1.2-4.8-1.5-7.6-.7-.4.1-.8-.1-.9-.5-.1-.4.1-.8.5-1Z" fill="#07130B"/>
+        <a
+          href="https://open.spotify.com/album/5nS7kijukEgPS9v8eAyZOo"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Spotify"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.49 17.307a.75.75 0 0 1-1.032.249c-2.826-1.727-6.385-2.118-10.576-1.16a.75.75 0 1 1-.334-1.462c4.587-1.048 8.52-.597 11.694 1.34a.75.75 0 0 1 .248 1.033zm1.47-3.27a.94.94 0 0 1-1.293.31c-3.235-1.99-8.17-2.567-11.998-1.404a.94.94 0 1 1-.547-1.798c4.374-1.327 9.81-.685 13.528 1.6a.94.94 0 0 1 .31 1.292zm.126-3.405C15.205 8.36 8.78 8.148 5.06 9.278a1.125 1.125 0 1 1-.654-2.153c4.27-1.296 11.37-1.045 15.84 1.61a1.125 1.125 0 0 1-1.16 1.93z"/>
           </svg>
-
         </a>
-
 
         <!-- YOUTUBE MUSIC -->
-
-        <a href="https://music.youtube.com/playlist?list=OLAK5uy_nkIMdv6o7lps0Z6JBtVtE2mZBW9Q8tPRQ&si=SSeKr0hLfaS0Itoa"
-           target="_blank" aria-label="YouTube Music">
-
-          <svg viewBox="0 0 48 48">
-            <circle cx="24" cy="24" r="22" fill="#FF0033"/>
-            <circle cx="24" cy="24" r="13.5" fill="none" stroke="white" stroke-width="3.4"/>
-            <path d="M21 17.8 31 24l-10 6.2V17.8Z" fill="white"/>
+        <a
+          href="https://music.youtube.com/playlist?list=OLAK5uy_nkIMdv6o7lps0Z6JBtVtE2mZBW9Q8tPRQ&si=SSeKr0hLfaS0Itoa"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube Music"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 18.2a6.2 6.2 0 1 1 0-12.4 6.2 6.2 0 0 1 0 12.4zm-1.4-9.1v5.8l4.7-2.9-4.7-2.9z"/>
           </svg>
-
         </a>
-
 
         <!-- BOOMPLAY -->
-
-        <a href="https://www.boomplay.com/share/album/EQWTr3oboUa_m3j4qHqW5Ajr"
-           target="_blank" aria-label="Boomplay">
-
-          <svg viewBox="0 0 48 48">
-            <rect x="2" y="2" width="44" height="44" rx="12" fill="#FF7A00"/>
-            <path d="M17 11.5c0-1.7 1.9-2.7 3.3-1.8l16 10.3c1.3.8 1.3 2.7 0 3.5l-16 10.3c-1.4.9-3.3-.1-3.3-1.8V11.5Z" fill="white"/>
-          </svg>
-
+        <a
+          href="https://www.boomplay.com/share/album/EQWTr3oboUa_m3j4qHqW5Ajr"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Boomplay"
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Boomplay_Logo.svg"
+            alt="Boomplay"
+          >
         </a>
 
-
         <!-- YOUTUBE -->
-
-        <a href="https://youtube.com/playlist?list=OLAK5uy_kmaTIvjvevv5PS1iWxwcu6CXmmA33wx9o&si=5tZrEeAklRuTOw5m"
-           target="_blank" aria-label="YouTube">
-
-          <svg viewBox="0 0 48 48">
-            <rect x="2" y="8" width="44" height="32" rx="9" fill="#FF0033"/>
-            <path d="M20 16.5c-.9-.5-2 .1-2 1.2v12.6c0 1.1 1.1 1.7 2 1.2l11-6.3c1-.6 1-1.8 0-2.4l-11-6.3Z" fill="white"/>
+        <a
+          href="https://youtube.com/playlist?list=OLAK5uy_kmaTIvjvevv5PS1iWxwcu6CXmmA33wx9o&si=5tZrEeAklRuTOw5m"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
           </svg>
-
         </a>
 
       </div>
 
-
-      <!-- BIOGRAPHY -->
-
-      <a class="biography"
-         href="https://hyperfollow.com/mofarity"
-         target="_blank">
-
+      <a
+        class="biography"
+        href="https://hyperfollow.com/mofarity"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         BIOGRAPHY
-
       </a>
 
     </main>
 
-
-    <!-- FOOTER -->
-
     <footer>
 
-      <a href="https://facebook.com/mofarity"
-         target="_blank">
-        Facebook
+      <a
+        href="https://facebook.com/mofarity"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        FACEBOOK
       </a>
 
-      <a href="https://whatsapp.com/channel/0029Vb8NzSf1t90V2XDCcm1Z"
-         target="_blank">
-        WhatsApp Channel
+      <a
+        href="https://whatsapp.com/channel/0029Vb8NzSf1t90V2XDCcm1Z"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WHATSAPP CHANNEL
       </a>
 
       <a href="mailto:book@mofarity.com">
-        Book
+        BOOK
       </a>
 
     </footer>
