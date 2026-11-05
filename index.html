@@ -16,27 +16,26 @@
       box-sizing: border-box;
     }
 
-    html {
+    html, body {
+      width: 100%;
       min-height: 100%;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     body {
       min-height: 100vh;
       min-height: 100dvh;
-      width: 100%;
-      overflow-x: hidden;
-      overflow-y: auto;
-      font-family: Arial, Helvetica, sans-serif;
       color: white;
       background: #000;
-      isolation: isolate;
+      overflow-x: hidden;
+      overflow-y: auto;
     }
 
-    /* BACKGROUND IMAGE */
+    /* INDEPENDENT BACKGROUND */
     .background {
       position: fixed;
       inset: 0;
-      z-index: -1;
+      z-index: 0;
       overflow: hidden;
       background: #000;
       touch-action: none;
@@ -48,14 +47,16 @@
     }
 
     .background img {
+      position: absolute;
       width: 100%;
       height: 100%;
+      inset: 0;
       object-fit: cover;
-      object-position: var(--bg-x, 50%) var(--bg-y, 50%);
-      display: block;
+      transform: translate3d(0, 0, 0) scale(1.2);
+      transform-origin: center;
+      pointer-events: none;
       user-select: none;
       -webkit-user-drag: none;
-      pointer-events: none;
     }
 
     .background::after {
@@ -70,9 +71,10 @@
       pointer-events: none;
     }
 
-    /* MAIN PAGE */
+    /* PAGE CONTENT */
     .page {
       position: relative;
+      z-index: 1;
       width: 100%;
       min-height: 100vh;
       min-height: 100dvh;
@@ -81,6 +83,7 @@
       justify-content: space-between;
       padding: 35px 6%;
       gap: 30px;
+      pointer-events: none;
     }
 
     /* HEADER */
@@ -88,7 +91,7 @@
       font-size: 17px;
       font-weight: 900;
       letter-spacing: 5px;
-      color: #24A9E0;
+      color: #ffffff;
       flex-shrink: 0;
     }
 
@@ -115,13 +118,14 @@
       color: #24A9E0;
     }
 
+    /* BY MOFARITY */
     .byline {
       font-size: 13px;
       font-weight: 900;
       letter-spacing: 4px;
       margin-top: 14px;
-      color: #24A9E0;
-      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.35);
+      color: #ffffff;
+      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
     }
 
     /* MUSIC PLATFORMS */
@@ -141,6 +145,7 @@
       justify-content: center;
       transition: transform 0.2s ease;
       flex-shrink: 0;
+      pointer-events: auto;
     }
 
     .music-platforms a:hover {
@@ -153,6 +158,7 @@
       display: block;
     }
 
+    /* NATURAL BRAND COLORS */
     .spotify-icon {
       fill: #1DB954;
     }
@@ -162,7 +168,7 @@
     }
 
     .youtube-icon {
-      fill: #FF0033;
+      fill: #FF0000;
     }
 
     .music-platforms img {
@@ -183,6 +189,7 @@
       font-weight: bold;
       letter-spacing: 3px;
       transition: all 0.25s ease;
+      pointer-events: auto;
     }
 
     .biography:hover {
@@ -206,6 +213,7 @@
       color: white;
       text-decoration: none;
       transition: opacity 0.2s ease;
+      pointer-events: auto;
     }
 
     footer a:hover {
@@ -254,7 +262,7 @@
       }
     }
 
-    /* SHORT SCREENS AND ROTATED PHONES */
+    /* LANDSCAPE / INVERTED PHONE */
     @media (max-height: 500px) {
       .page {
         justify-content: flex-start;
@@ -290,7 +298,7 @@
 
 <body>
 
-  <!-- DRAGGABLE BACKGROUND -->
+  <!-- BACKGROUND IMAGE -->
   <div class="background" id="background">
     <img
       src="mofarity-background.jpg"
@@ -299,6 +307,7 @@
     >
   </div>
 
+  <!-- WEBSITE CONTENT -->
   <div class="page">
 
     <header>
@@ -369,6 +378,7 @@
 
       </div>
 
+      <!-- BIOGRAPHY -->
       <a
         class="biography"
         href="https://hyperfollow.com/mofarity"
@@ -380,6 +390,7 @@
 
     </main>
 
+    <!-- FOOTER -->
     <footer>
 
       <a
@@ -406,17 +417,32 @@
 
   </div>
 
-  <!-- BACKGROUND TOUCH AND MOUSE NAVIGATION -->
+  <!-- INDEPENDENT BACKGROUND DRAGGING -->
   <script>
     const background = document.getElementById("background");
+    const bgImage = background.querySelector("img");
 
     let isDragging = false;
     let startX = 0;
     let startY = 0;
-    let currentX = 50;
-    let currentY = 50;
+
+    let panX = 0;
+    let panY = 0;
+
+    function updateBackground() {
+      const maxX = background.clientWidth * 0.10;
+      const maxY = background.clientHeight * 0.10;
+
+      panX = Math.max(-maxX, Math.min(maxX, panX));
+      panY = Math.max(-maxY, Math.min(maxY, panY));
+
+      bgImage.style.transform =
+        `translate3d(${panX}px, ${panY}px, 0) scale(1.2)`;
+    }
 
     background.addEventListener("pointerdown", (event) => {
+      if (event.pointerType === "mouse" && event.button !== 0) return;
+
       isDragging = true;
 
       startX = event.clientX;
@@ -431,23 +457,13 @@
       const deltaX = event.clientX - startX;
       const deltaY = event.clientY - startY;
 
-      const rect = background.getBoundingClientRect();
-
-      currentX = Math.max(
-        0,
-        Math.min(100, currentX - (deltaX / rect.width) * 100)
-      );
-
-      currentY = Math.max(
-        0,
-        Math.min(100, currentY - (deltaY / rect.height) * 100)
-      );
-
-      background.querySelector("img").style.objectPosition =
-        `${currentX}% ${currentY}%`;
+      panX += deltaX;
+      panY += deltaY;
 
       startX = event.clientX;
       startY = event.clientY;
+
+      updateBackground();
     });
 
     function stopDragging() {
@@ -457,6 +473,8 @@
     background.addEventListener("pointerup", stopDragging);
     background.addEventListener("pointercancel", stopDragging);
     background.addEventListener("lostpointercapture", stopDragging);
+
+    window.addEventListener("resize", updateBackground);
   </script>
 
 </body>
