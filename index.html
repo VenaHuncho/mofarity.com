@@ -28,38 +28,29 @@
       color: white;
       background: #000;
       overflow-x: hidden;
-      overflow-y: auto;
     }
 
-    /* INDEPENDENT BACKGROUND */
-    .background {
+    /* FULLSCREEN VIDEO BACKGROUND */
+    .video-background {
       position: fixed;
       inset: 0;
+      width: 100%;
+      height: 100%;
       z-index: 0;
       overflow: hidden;
       background: #000;
-      touch-action: none;
-      cursor: grab;
     }
 
-    .background:active {
-      cursor: grabbing;
-    }
-
-    .background img {
-      position: absolute;
+    .video-background video {
       width: 100%;
       height: 100%;
-      inset: 0;
       object-fit: cover;
-      transform: translate3d(0, 0, 0) scale(1.2);
-      transform-origin: center;
-      pointer-events: none;
-      user-select: none;
-      -webkit-user-drag: none;
+      object-position: center;
+      display: block;
     }
 
-    .background::after {
+    /* DARK OVERLAY */
+    .video-background::after {
       content: "";
       position: absolute;
       inset: 0;
@@ -83,7 +74,6 @@
       justify-content: space-between;
       padding: 35px 6%;
       gap: 30px;
-      pointer-events: none;
     }
 
     /* HEADER */
@@ -145,7 +135,6 @@
       justify-content: center;
       transition: transform 0.2s ease;
       flex-shrink: 0;
-      pointer-events: auto;
     }
 
     .music-platforms a:hover {
@@ -158,7 +147,7 @@
       display: block;
     }
 
-    /* NATURAL BRAND COLORS */
+    /* BRAND COLORS */
     .spotify-icon {
       fill: #1DB954;
     }
@@ -189,7 +178,6 @@
       font-weight: bold;
       letter-spacing: 3px;
       transition: all 0.25s ease;
-      pointer-events: auto;
     }
 
     .biography:hover {
@@ -213,7 +201,6 @@
       color: white;
       text-decoration: none;
       transition: opacity 0.2s ease;
-      pointer-events: auto;
     }
 
     footer a:hover {
@@ -262,7 +249,7 @@
       }
     }
 
-    /* LANDSCAPE / INVERTED PHONE */
+    /* LANDSCAPE / SHORT SCREENS */
     @media (max-height: 500px) {
       .page {
         justify-content: flex-start;
@@ -298,13 +285,19 @@
 
 <body>
 
-  <!-- BACKGROUND IMAGE -->
-  <div class="background" id="background">
-    <img
-      src="mofarity-background.jpg"
-      alt=""
-      draggable="false"
+  <!-- FULLSCREEN VIDEO -->
+  <div class="video-background">
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      poster="mofarity-background.jpg"
     >
+      <source src="mofarity-background.mp4" type="video/mp4">
+      Your browser does not support background video.
+    </video>
   </div>
 
   <!-- WEBSITE CONTENT -->
@@ -416,66 +409,6 @@
     </footer>
 
   </div>
-
-  <!-- INDEPENDENT BACKGROUND DRAGGING -->
-  <script>
-    const background = document.getElementById("background");
-    const bgImage = background.querySelector("img");
-
-    let isDragging = false;
-    let startX = 0;
-    let startY = 0;
-
-    let panX = 0;
-    let panY = 0;
-
-    function updateBackground() {
-      const maxX = background.clientWidth * 0.10;
-      const maxY = background.clientHeight * 0.10;
-
-      panX = Math.max(-maxX, Math.min(maxX, panX));
-      panY = Math.max(-maxY, Math.min(maxY, panY));
-
-      bgImage.style.transform =
-        `translate3d(${panX}px, ${panY}px, 0) scale(1.2)`;
-    }
-
-    background.addEventListener("pointerdown", (event) => {
-      if (event.pointerType === "mouse" && event.button !== 0) return;
-
-      isDragging = true;
-
-      startX = event.clientX;
-      startY = event.clientY;
-
-      background.setPointerCapture(event.pointerId);
-    });
-
-    background.addEventListener("pointermove", (event) => {
-      if (!isDragging) return;
-
-      const deltaX = event.clientX - startX;
-      const deltaY = event.clientY - startY;
-
-      panX += deltaX;
-      panY += deltaY;
-
-      startX = event.clientX;
-      startY = event.clientY;
-
-      updateBackground();
-    });
-
-    function stopDragging() {
-      isDragging = false;
-    }
-
-    background.addEventListener("pointerup", stopDragging);
-    background.addEventListener("pointercancel", stopDragging);
-    background.addEventListener("lostpointercapture", stopDragging);
-
-    window.addEventListener("resize", updateBackground);
-  </script>
 
 </body>
 </html>
