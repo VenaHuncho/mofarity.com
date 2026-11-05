@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Official website of Mofarity, Kenyan recording artist. Discover music, releases and updates.">
+  <title>Mofarity | Official Website</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #090909;
+      color: #f5f5f5;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 8%;
+      border-bottom: 1px solid #222;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: 3px;
+    }
+
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 13px;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .hero {
+      min-height: 78vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 10%;
+      background:
+        radial-gradient(ellipse at 75% 40%, #292929 0%, transparent 55%),
+        #090909;
+    }
+
+    .eyebrow {
+      color: #999;
+      letter-spacing: 5px;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(65px, 13vw, 145px);
+      line-height: 0.95;
+      letter-spacing: -7px;
+      margin: 25px 0;
+      font-weight: 900;
+    }
+
+    .hero p {
+      color: #aaa;
+      max-width: 450px;
+      font-size: 16px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 32px;
+      padding: 14px 28px;
+      border: 1px solid white;
+      color: white;
+      text-decoration: none;
+      width: fit-content;
+      font-size: 12px;
+      letter-spacing: 2px;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      background: white;
+      color: black;
+    }
+
+    section {
+      padding: 90px 10%;
+      border-top: 1px solid #222;
+    }
+
+    .section-label {
+      color: #777;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: clamp(35px, 6vw, 65px);
+      margin-bottom: 25px;
+    }
+
+    .about p {
+      color: #aaa;
+      max-width: 650px;
+      font-size: 17px;
+    }
+
+    .music {
+      background: #101010;
+    }
+
+    .music p {
+      color: #aaa;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-top: 25px;
+    }
+
+    .socials a {
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      border-bottom: 1px solid #666;
+      padding-bottom: 5px;
+    }
+
+    footer {
+      padding: 30px 10%;
+      color: #666;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media(max-width: 600px) {
+      nav {
+        padding: 20px 6%;
+      }
+
+      nav a {
+        margin-left: 10px;
+        font-size: 11px;
+      }
+
+      h1 {
+        letter-spacing: -4px;
+      }
+
+      section {
+        padding: 65px 7%;
+      }
+
+      .hero {
+        padding: 70px 7%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">MOFARITY.</div>
+    <div>
+      <a href="#about">ABOUT</a>
+      <a href="#music">MUSIC</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <div class="eyebrow">Kenyan Recording Artist</div>
+      <h1>MOFARITY</h1>
+      <p>
+        Moving between Gikuyu, Swahili and English.
+        Music, expression and a story still being written.
+      </p>
+      <a href="#music" class="button">EXPLORE MY MUSIC ↗</a>
+    </div>
+
+    <section class="about" id="about">
+      <div class="section-label">01 / The Artist</div>
+      <h2>Beyond the music.</h2>
+      <p>
+        Mofarity is a Kenyan recording artist creating music
+        through different languages, experiences and sounds.
+        Every release is another chapter of the journey.
+      </p>
+    </section>
+
+    <section class="music" id="music">
+      <div class="section-label">02 / Discography</div>
+      <h2>The Music.</h2>
+      <p>
+        Discover the latest releases and listen to Mofarity
+        on your preferred streaming platform.
+      </p>
+      <a href="#" class="button">LISTEN TO MY MUSIC ↗</a>
+    </section>
+
+    <section id="contact">
+      <div class="section-label">03 / Connect</div>
+      <h2>Get in touch.</h2>
+      <p>For bookings and professional enquiries:</p>
+      <a href="mailto:book@mofarity.com" class="button">
+        BOOKING ENQUIRIES ↗
+      </a>
+
+      <div class="socials">
+        <!-- Replace # with your actual profile links -->
+        <a href="#">INSTAGRAM</a>
+        <a href="#">YOUTUBE</a>
+        <a href="#">SPOTIFY</a>
+        <a href="#">TIKTOK</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> MOFARITY</span>
+    <span>INDEPENDENTLY CREATED.</span>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
