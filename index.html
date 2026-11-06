@@ -2,479 +2,564 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>MOFARITY</title>
+<title>MOFARITY</title>
 
-  <link rel="icon" type="image/png" href="mofarity-favicon.png">
+<link rel="icon" type="image/png" href="mofarity-favicon.png">
 
-    <!-- MOFARITY SEO -->
-  <meta name="description" content="Welcome to the official website of Mofarity. Discover music, releases, discography and booking information.">
+<!-- MOFARITY SEO -->
+<meta name="description" content="Welcome to the official website of Mofarity. Discover music, releases, discography and booking information.">
 
-  <meta name="author" content="Mofarity">
+<meta name="author" content="Mofarity">
 
-  <link rel="canonical" href="https://mofarity.com/">
+<link rel="canonical" href="https://mofarity.com/">
 
-  <meta property="og:title" content="MOFARITY">
-  <meta property="og:description" content="Discover music, releases and more from Mofarity.">
-  <meta property="og:url" content="https://mofarity.com/">
-  <meta property="og:type" content="website">
+<meta property="og:title" content="MOFARITY">
+<meta property="og:description" content="Discover music, releases and more from Mofarity.">
+<meta property="og:url" content="https://mofarity.com/">
+<meta property="og:type" content="website">
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Mofarity",
-    "url": "https://mofarity.com/"
-  }
-  </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Mofarity",
+  "url": "https://mofarity.com/"
+}
+</script>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Mofarity",
-    "url": "https://mofarity.com/",
-    "sameAs": [
-      "https://facebook.com/mofarity",
-      "https://hyperfollow.com/mofarity",
-      "https://open.spotify.com/album/5nS7kijukEgPS9v8eAyZOo"
-    ]
-  }
-  </script>
-  
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mofarity",
+  "url": "https://mofarity.com/",
+  "sameAs": [
+    "https://facebook.com/mofarity",
+    "https://hyperfollow.com/mofarity",
+    "https://open.spotify.com/album/5nS7kijukEgPS9v8eAyZOo"
+  ]
+}
+</script>
 
-    html, body {
-      width: 100%;
-      min-height: 100%;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+<style>
 
-    body {
-      min-height: 100vh;
-      min-height: 100dvh;
-      color: white;
-      background: #000;
-      overflow-x: hidden;
-    }
+/* GLOBAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    /* FULLSCREEN VIDEO BACKGROUND */
-    .video-background {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      overflow: hidden;
-      background: #000;
-    }
+html, body {
+    width: 100%;
+    min-height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-    .video-background video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-    }
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    color: white;
+    background: #000;
+    overflow-x: hidden;
+}
 
-    /* DARK OVERLAY */
-    .video-background::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
+/* FULLSCREEN VIDEO BACKGROUND */
+.video-background {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    background: #000;
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* DARK OVERLAY */
+.video-background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 0.15),
         rgba(0, 0, 0, 0.40)
-      );
-      pointer-events: none;
-    }
+    );
+    pointer-events: none;
+}
 
-    /* PAGE CONTENT */
+/* PAGE CONTENT */
+.page {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 35px 6% 0;
+}
+
+/* DISCOGRAPHY AREA */
+.discography-area {
+    flex: 1;
+    min-height: 120px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* DISCOGRAPHY */
+.discography {
+    display: inline-block;
+    padding: 13px 30px;
+
+    border: 1px solid white;
+
+    color: white;
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+
+    transition: all 0.25s ease;
+}
+
+.discography:hover {
+    background: white;
+    color: black;
+}
+
+/* MAIN CONTENT */
+main {
+    width: 100%;
+
+    margin-top: auto;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 15px 0 24px;
+
+    flex-shrink: 0;
+}
+
+/* GEEKIN' TITLE */
+h1 {
+    font-size: clamp(45px, 7vw, 90px);
+    font-weight: 900;
+    letter-spacing: -4px;
+    line-height: 1;
+    color: #24A9E0;
+}
+
+/* BY MOFARITY */
+.byline {
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    margin-top: 14px;
+
+    color: #ffffff;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* MUSIC PLATFORMS */
+.music-platforms {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 22px;
+    margin-top: 25px;
+}
+
+.music-platforms a {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: transform 0.2s ease;
+
+    flex-shrink: 0;
+}
+
+.music-platforms a:hover {
+    transform: scale(1.15);
+}
+
+.music-platforms svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* BRAND COLORS */
+.spotify-icon {
+    fill: #1DB954;
+}
+
+.youtube-music-icon {
+    fill: #FF0000;
+}
+
+.youtube-icon {
+    fill: #FF0000;
+}
+
+.music-platforms img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* FOOTER */
+footer {
+    width: calc(100% + 12vw);
+    margin-left: -6vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 30px;
+
+    font-size: 10px;
+    letter-spacing: 2px;
+
+    padding: 19px 6%;
+
+    /* TRANSLUCENT FOOTER BACKGROUND */
+    background: rgba(0, 0, 0, 0.48);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    flex-shrink: 0;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+footer a:hover {
+    opacity: 0.65;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+
     .page {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      min-height: 100vh;
-      min-height: 100dvh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 35px 6%;
-      gap: 30px;
+        padding: 25px 20px 0;
     }
 
-    /* HEADER */
-    header {
-      font-size: 17px;
-      font-weight: 900;
-      letter-spacing: 5px;
-      color: #ffffff;
-      flex-shrink: 0;
+    .discography-area {
+        min-height: 100px;
     }
 
-    /* MAIN CONTENT */
     main {
-      width: 50%;
-      margin-left: auto;
-      margin-top: auto;
-      margin-bottom: auto;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      padding: 25px 0;
+        width: 100%;
+        padding: 15px 0 20px;
     }
 
     h1 {
-      font-size: clamp(45px, 7vw, 90px);
-      font-weight: 900;
-      letter-spacing: -4px;
-      line-height: 1;
-      color: #24A9E0;
+        font-size: clamp(48px, 13vw, 75px);
+        letter-spacing: -3px;
     }
 
-    /* BY MOFARITY */
     .byline {
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: 4px;
-      margin-top: 14px;
-      color: #ffffff;
-      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+        font-size: 13px;
+        letter-spacing: 3px;
     }
 
-    /* MUSIC PLATFORMS */
     .music-platforms {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 22px;
-      margin-top: 38px;
+        gap: 18px;
+        margin-top: 22px;
     }
 
     .music-platforms a {
-      width: 38px;
-      height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.2s ease;
-      flex-shrink: 0;
-    }
-
-    .music-platforms a:hover {
-      transform: scale(1.15);
-    }
-
-    .music-platforms svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    /* BRAND COLORS */
-    .spotify-icon {
-      fill: #1DB954;
-    }
-
-    .youtube-music-icon {
-      fill: #FF0000;
-    }
-
-    .youtube-icon {
-      fill: #FF0000;
-    }
-
-    .music-platforms img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    /* DISCOGRAPHY */
-    .discography {
-      display: inline-block;
-      margin-top: 35px;
-      padding: 13px 30px;
-      border: 1px solid white;
-      color: white;
-      text-decoration: none;
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 3px;
-      transition: all 0.25s ease;
-    }
-
-    .discography:hover {
-      background: white;
-      color: black;
-    }
-
-    /* FOOTER */
-    footer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 30px;
-      font-size: 10px;
-      letter-spacing: 2px;
-      flex-shrink: 0;
-    }
-
-    footer a {
-      color: white;
-      text-decoration: none;
-      transition: opacity 0.2s ease;
-    }
-
-    footer a:hover {
-      opacity: 0.65;
-    }
-
-    /* MOBILE */
-    @media (max-width: 700px) {
-      .page {
-        padding: 25px 20px;
-        gap: 25px;
-      }
-
-      header {
-        font-size: 14px;
-      }
-
-      main {
-        width: 100%;
-        padding: 30px 0;
-      }
-
-      h1 {
-        font-size: clamp(48px, 13vw, 75px);
-        letter-spacing: -3px;
-      }
-
-      .byline {
-        font-size: 13px;
-        letter-spacing: 3px;
-      }
-
-      .music-platforms {
-        gap: 18px;
-        margin-top: 30px;
-      }
-
-      .music-platforms a {
         width: 34px;
         height: 34px;
-      }
+    }
 
-      footer {
+    footer {
+        width: calc(100% + 40px);
+        margin-left: -20px;
+
         gap: 20px;
         font-size: 9px;
-      }
+
+        padding: 17px 20px;
+
+        background: rgba(0, 0, 0, 0.52);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+}
+
+/* LANDSCAPE / SHORT SCREENS */
+@media (max-height: 500px) {
+
+    .page {
+        padding-top: 12px;
     }
 
-    /* LANDSCAPE / SHORT SCREENS */
-    @media (max-height: 500px) {
-      .page {
-        justify-content: flex-start;
-        gap: 20px;
-        padding-top: 18px;
-        padding-bottom: 18px;
-      }
+    .discography-area {
+        min-height: 65px;
+    }
 
-      main {
-        margin-top: 0;
-        margin-bottom: 0;
-        padding: 15px 0;
-      }
+    main {
+        padding: 8px 0 12px;
+    }
 
-      h1 {
+    h1 {
         font-size: clamp(38px, 7vw, 65px);
-      }
-
-      .music-platforms {
-        margin-top: 20px;
-      }
-
-      .discography {
-        margin-top: 20px;
-      }
-
-      footer {
-        margin-top: auto;
-      }
     }
-  </style>
+
+    .byline {
+        margin-top: 8px;
+    }
+
+    .music-platforms {
+        margin-top: 12px;
+    }
+
+    .music-platforms a {
+        width: 30px;
+        height: 30px;
+    }
+
+    footer {
+        gap: 18px;
+        padding: 12px 6%;
+        font-size: 9px;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-  <!-- FULLSCREEN VIDEO -->
-  <div class="video-background">
+<!-- FULLSCREEN VIDEO -->
+<div class="video-background">
+
     <video
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="metadata"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
     >
-      <source src="mofarity-background.mp4" type="video/mp4">
-      Your browser does not support background video.
+
+        <source src="mofarity-background.mp4" type="video/mp4">
+
+        Your browser does not support background video.
+
     </video>
-  </div>
 
-  <!-- WEBSITE CONTENT -->
-  <div class="page">
+</div>
 
+<!-- WEBSITE CONTENT -->
+<div class="page">
+
+    <!-- DISCOGRAPHY: CENTRE / UPPER PAGE -->
+    <div class="discography-area">
+
+        <a
+            class="discography"
+            href="https://hyperfollow.com/mofarity"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            DISCOGRAPHY
+        </a>
+
+    </div>
+
+
+    <!-- MAIN CONTENT: BOTTOM CENTRE -->
     <main>
 
-      <h1>GEEKIN'</h1>
+        <h1>GEEKIN'</h1>
 
-      <div class="byline">
-        BY MOFARITY
-      </div>
+        <div class="byline">
+            BY MOFARITY
+        </div>
 
-      <div class="music-platforms">
-        
-        <!-- BOOMPLAY -->
-        <a
-          href="https://www.boomplay.com/share/album/EQWTr3oboUa_m3j4qHqW5Ajr"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Boomplay"
-        >
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Boomplay_Logo.svg"
-            alt="Boomplay"
-          >
-        </a>
 
-        <!-- YOUTUBE MUSIC -->
-        <a
-          href="https://music.youtube.com/playlist?list=OLAK5uy_nkIMdv6o7lps0Z6JBtVtE2mZBW9Q8tPRQ&si=SSeKr0hLfaS0Itoa"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="YouTube Music"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true"
-               class="youtube-music-icon">
-            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 18.2a6.2 6.2 0 1 1 0-12.4 6.2 6.2 0 0 1 0 12.4zm-1.4-9.1v5.8l4.7-2.9-4.7-2.9z"/>
-          </svg>
-        </a>
-        
-        <!-- SPOTIFY -->
-        <a
-          href="https://open.spotify.com/album/5nS7kijukEgPS9v8eAyZOo"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Spotify"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true"
-               class="spotify-icon">
-            <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.49 17.307a.75.75 0 0 1-1.032.249c-2.826-1.727-6.385-2.118-10.576-1.16a.75.75 0 1 1-.334-1.462c4.587-1.048 8.52-.597 11.694 1.34a.75.75 0 0 1 .248 1.033zm1.47-3.27a.94.94 0 0 1-1.293.31c-3.235-1.99-8.17-2.567-11.998-1.404a.94.94 0 1 1-.547-1.798c4.374-1.327 9.81-.685 13.528 1.6a.94.94 0 0 1 .31 1.292zm.126-3.405C15.205 8.36 8.78 8.148 5.06 9.278a1.125 1.125 0 1 1-.654-2.153c4.27-1.296 11.37-1.045 15.84 1.61a1.125 1.125 0 0 1-1.16 1.93z"/>
-          </svg>
-        </a>
+        <!-- MUSIC PLATFORMS -->
+        <div class="music-platforms">
 
-        <!-- YOUTUBE -->
-        <a
-          href="https://youtube.com/playlist?list=OLAK5uy_kmaTIvjvevv5PS1iWxwcu6CXmmA33wx9o&si=5tZrEeAklRuTOw5m"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="YouTube"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true"
-               class="youtube-icon">
-            <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
-          </svg>
-        </a>
+            <!-- SPOTIFY: MOVED TO FIRST POSITION -->
+            <a
+                href="https://open.spotify.com/album/5nS7kijukEgPS9v8eAyZOo"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Spotify"
+            >
 
-      </div>
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    class="spotify-icon"
+                >
 
-      <!-- DISCOGRAPHY -->
-      <a
-        class="discography"
-        href="https://hyperfollow.com/mofarity"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        DISCOGRAPHY
-      </a>
+                    <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.49 17.307a.75.75 0 0 1-1.032.249c-2.826-1.727-6.385-2.118-10.576-1.16a.75.75 0 1 1-.334-1.462c4.587-1.048 8.52-.597 11.694 1.34a.75.75 0 0 1 .248 1.033zm1.47-3.27a.94.94 0 0 1-1.293.31c-3.235-1.99-8.17-2.567-11.998-1.404a.94.94 0 1 1-.547-1.798c4.374-1.327 9.81-.685 13.528 1.6a.94.94 0 0 1 .31 1.292zm.126-3.405C15.205 8.36 8.78 8.148 5.06 9.278a1.125 1.125 0 1 1-.654-2.153c4.27-1.296 11.37-1.045 15.84 1.61a1.125 1.125 0 0 1-1.16 1.93z"/>
+
+                </svg>
+
+            </a>
+
+
+            <!-- YOUTUBE MUSIC -->
+            <a
+                href="https://music.youtube.com/playlist?list=OLAK5uy_nkIMdv6o7lps0Z6JBtVtE2mZBW9Q8tPRQ&si=SSeKr0hLfaS0Itoa"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube Music"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    class="youtube-music-icon"
+                >
+
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 18.2a6.2 6.2 0 1 1 0-12.4 6.2 6.2 0 0 1 0 12.4zm-1.4-9.1v5.8l4.7-2.9-4.7-2.9z"/>
+
+                </svg>
+
+            </a>
+
+
+            <!-- BOOMPLAY: MOVED TO THIRD POSITION -->
+            <a
+                href="https://www.boomplay.com/share/album/EQWTr3oboUa_m3j4qHqW5Ajr"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Boomplay"
+            >
+
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Boomplay_Logo.svg"
+                    alt="Boomplay"
+                >
+
+            </a>
+
+
+            <!-- YOUTUBE -->
+            <a
+                href="https://youtube.com/playlist?list=OLAK5uy_kmaTIvjvevv5PS1iWxwcu6CXmmA33wx9o&si=5tZrEeAklRuTOw5m"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    class="youtube-icon"
+                >
+
+                    <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
+
+                </svg>
+
+            </a>
+
+        </div>
 
     </main>
+
 
     <!-- FOOTER -->
     <footer>
 
-      <a
-        href="https://facebook.com/mofarity"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        FB
-      </a>
+        <a
+            href="https://facebook.com/mofarity"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            FB
+        </a>
 
-      <a
-        href="https://instagram.com/mofarity"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        IG
-      </a>
+        <a
+            href="https://instagram.com/mofarity"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            IG
+        </a>
 
-      <a
-        href="https://x.com/mofarity"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        X
-      </a>
+        <a
+            href="https://x.com/mofarity"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            X
+        </a>
 
-      <a
-        href="https://youtube.com/@mofarity"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        YT
-      </a>
+        <a
+            href="https://youtube.com/@mofarity"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            YT
+        </a>
 
-      <a
-        href="https://tiktok.com/@mofarity"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        TIKTOK
-      </a>
+        <a
+            href="https://tiktok.com/@mofarity"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            TIKTOK
+        </a>
 
-      <a
-        href="https://whatsapp.com/channel/0029Vb8NzSf1t90V2XDCcm1Z"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GET UPDATES
-      </a>
+        <a
+            href="https://whatsapp.com/channel/0029Vb8NzSf1t90V2XDCcm1Z"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            GET UPDATES
+        </a>
 
-      <a 
-        href="mailto:book@mofarity.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        BOOK
-      </a>
+        <a
+            href="mailto:book@mofarity.com"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            BOOK
+        </a>
 
     </footer>
 
-  </div>
+</div>
 
 </body>
 </html>
