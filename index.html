@@ -10,8 +10,10 @@
 <link rel="icon" type="image/png" href="mofarity-favicon.png">
 
 <!-- MOFARITY SEO -->
-<meta name="description" content="Welcome to the official website of Mofarity. Discover music, releases and booking information.">
+<meta name="description" content="Welcome to the official website of Mofarity. Discover music, releases, discography and booking information.">
+
 <meta name="author" content="Mofarity">
+
 <link rel="canonical" href="https://mofarity.com/">
 
 <meta property="og:title" content="MOFARITY">
@@ -89,62 +91,79 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-
     background: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 0.15),
         rgba(0, 0, 0, 0.40)
     );
-
     pointer-events: none;
 }
 
-/* 
-   EIGHT-STEP SCREEN LAYOUT
-
-   STEP 1: Empty
-   STEP 2: GEEKIN' BY MOFARITY
-   STEP 3: Empty
-   STEP 4: Empty
-   STEP 5: MUSIC PLATFORM ICONS
-   STEP 6: Empty
-   STEP 7: DISCOGRAPHY
-   STEP 8: FOOTER
-*/
-
+/* PAGE CONTENT */
 .page {
     position: relative;
     z-index: 1;
-
     width: 100%;
     min-height: 100vh;
     min-height: 100dvh;
 
-    display: grid;
+    display: flex;
+    flex-direction: column;
 
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(8, minmax(0, 1fr));
-
-    padding: 0;
-    gap: 0;
+    padding: 35px 6% 0;
 }
 
-/* STEP 2: MAIN TITLE */
-.hero {
-    grid-row: 2;
-    grid-column: 1;
+/* DISCOGRAPHY AREA */
+.discography-area {
+    flex: 1;
+    min-height: 120px;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* DISCOGRAPHY */
+.discography {
+    display: inline-block;
+    padding: 13px 30px;
+
+    border: 1px solid white;
+
+    color: white;
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+
+    transition: all 0.25s ease;
+}
+
+.discography:hover {
+    background: white;
+    color: black;
+}
+
+/* MAIN CONTENT */
+main {
     width: 100%;
+
+    margin-top: auto;
+
+    text-align: center;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    text-align: center;
-    padding: 5px 15px;
+    padding: 15px 0 24px;
+
+    flex-shrink: 0;
 }
 
+/* GEEKIN' TITLE */
 h1 {
     font-size: clamp(45px, 7vw, 90px);
     font-weight: 900;
@@ -164,19 +183,14 @@ h1 {
     text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* STEP 5: MUSIC PLATFORMS */
+/* MUSIC PLATFORMS */
 .music-platforms {
-    grid-row: 5;
-    grid-column: 1;
-
-    width: 100%;
-
     display: flex;
     align-items: center;
     justify-content: center;
 
     gap: 22px;
-    padding: 5px 10px;
+    margin-top: 25px;
 }
 
 .music-platforms a {
@@ -187,9 +201,9 @@ h1 {
     align-items: center;
     justify-content: center;
 
-    flex-shrink: 0;
-
     transition: transform 0.2s ease;
+
+    flex-shrink: 0;
 }
 
 .music-platforms a:hover {
@@ -221,51 +235,14 @@ h1 {
     object-fit: contain;
 }
 
-/* STEP 7: DISCOGRAPHY */
-.discography-area {
-    grid-row: 7;
-    grid-column: 1;
-
-    width: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.discography {
-    display: inline-block;
-
-    padding: 13px 30px;
-
-    border: 1px solid white;
-
-    color: white;
-    text-decoration: none;
-
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 3px;
-
-    transition: all 0.25s ease;
-}
-
-.discography:hover {
-    background: white;
-    color: black;
-}
-
-/* STEP 8: FOOTER */
+/* FOOTER */
 footer {
-    grid-row: 8;
-    grid-column: 1;
-
-    width: 100%;
+    width: calc(100% + 12vw);
+    margin-left: -6vw;
 
     display: flex;
     justify-content: center;
     align-items: center;
-    align-content: center;
     flex-wrap: wrap;
 
     gap: 30px;
@@ -273,13 +250,14 @@ footer {
     font-size: 10px;
     letter-spacing: 2px;
 
-    padding: 10px 6%;
+    padding: 19px 6%;
 
     /* TRANSLUCENT FOOTER BACKGROUND */
     background: rgba(0, 0, 0, 0.48);
-
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
+
+    flex-shrink: 0;
 }
 
 footer a {
@@ -292,8 +270,21 @@ footer a:hover {
     opacity: 0.65;
 }
 
-/* MOBILE PORTRAIT */
+/* MOBILE */
 @media (max-width: 700px) {
+
+    .page {
+        padding: 25px 20px 0;
+    }
+
+    .discography-area {
+        min-height: 100px;
+    }
+
+    main {
+        width: 100%;
+        padding: 15px 0 20px;
+    }
 
     h1 {
         font-size: clamp(48px, 13vw, 75px);
@@ -307,6 +298,7 @@ footer a:hover {
 
     .music-platforms {
         gap: 18px;
+        margin-top: 22px;
     }
 
     .music-platforms a {
@@ -314,17 +306,16 @@ footer a:hover {
         height: 34px;
     }
 
-    .discography {
-        padding: 12px 25px;
-    }
-
     footer {
+        width: calc(100% + 40px);
+        margin-left: -20px;
+
         gap: 20px;
         font-size: 9px;
-        padding: 10px 15px;
+
+        padding: 17px 20px;
 
         background: rgba(0, 0, 0, 0.52);
-
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
     }
@@ -333,18 +324,28 @@ footer a:hover {
 /* LANDSCAPE / SHORT SCREENS */
 @media (max-height: 500px) {
 
+    .page {
+        padding-top: 12px;
+    }
+
+    .discography-area {
+        min-height: 65px;
+    }
+
+    main {
+        padding: 8px 0 12px;
+    }
+
     h1 {
         font-size: clamp(38px, 7vw, 65px);
-        letter-spacing: -3px;
     }
 
     .byline {
-        font-size: 11px;
         margin-top: 8px;
     }
 
     .music-platforms {
-        gap: 18px;
+        margin-top: 12px;
     }
 
     .music-platforms a {
@@ -352,15 +353,10 @@ footer a:hover {
         height: 30px;
     }
 
-    .discography {
-        padding: 10px 24px;
-        font-size: 10px;
-    }
-
     footer {
-        gap: 14px;
-        font-size: 8px;
-        padding: 7px 10px;
+        gap: 18px;
+        padding: 12px 6%;
+        font-size: 9px;
     }
 }
 
@@ -391,103 +387,7 @@ footer a:hover {
 <!-- WEBSITE CONTENT -->
 <div class="page">
 
-    <!-- STEP 2: GEEKIN' BY MOFARITY -->
-    <section class="hero">
-
-        <h1>GEEKIN'</h1>
-
-        <div class="byline">
-            BY MOFARITY
-        </div>
-
-    </section>
-
-
-    <!-- STEP 5: MUSIC PLATFORMS -->
-    <div class="music-platforms">
-
-        <!-- SPOTIFY -->
-        <a
-            href="https://open.spotify.com/album/5nS7kijukEgPS9v8eAyZOo"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Spotify"
-        >
-
-            <svg
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                class="spotify-icon"
-            >
-
-                <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.49 17.307a.75.75 0 0 1-1.032.249c-2.826-1.727-6.385-2.118-10.576-1.16a.75.75 0 1 1-.334-1.462c4.587-1.048 8.52-.597 11.694 1.34a.75.75 0 0 1 .248 1.033zm1.47-3.27a.94.94 0 0 1-1.293.31c-3.235-1.99-8.17-2.567-11.998-1.404a.94.94 0 1 1-.547-1.798c4.374-1.327 9.81-.685 13.528 1.6a.94.94 0 0 1 .31 1.292zm.126-3.405C15.205 8.36 8.78 8.148 5.06 9.278a1.125 1.125 0 1 1-.654-2.153c4.27-1.296 11.37-1.045 15.84 1.61a1.125 1.125 0 0 1-1.16 1.93z"/>
-
-            </svg>
-
-        </a>
-
-
-        <!-- YOUTUBE MUSIC -->
-        <a
-            href="https://music.youtube.com/playlist?list=OLAK5uy_nkIMdv6o7lps0Z6JBtVtE2mZBW9Q8tPRQ&si=SSeKr0hLfaS0Itoa"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="YouTube Music"
-        >
-
-            <svg
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                class="youtube-music-icon"
-            >
-
-                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 18.2a6.2 6.2 0 1 1 0-12.4 6.2 6.2 0 0 1 0 12.4zm-1.4-9.1v5.8l4.7-2.9-4.7-2.9z"/>
-
-            </svg>
-
-        </a>
-
-
-        <!-- BOOMPLAY -->
-        <a
-            href="https://www.boomplay.com/share/album/EQWTr3oboUa_m3j4qHqW5Ajr"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Boomplay"
-        >
-
-            <img
-                src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Boomplay_Logo.svg"
-                alt="Boomplay"
-            >
-
-        </a>
-
-
-        <!-- YOUTUBE -->
-        <a
-            href="https://youtube.com/playlist?list=OLAK5uy_kmaTIvjvevv5PS1iWxwcu6CXmmA33wx9o&si=5tZrEeAklRuTOw5m"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="YouTube"
-        >
-
-            <svg
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                class="youtube-icon"
-            >
-
-                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
-
-            </svg>
-
-        </a>
-
-    </div>
-
-
-    <!-- STEP 7: DISCOGRAPHY -->
+    <!-- DISCOGRAPHY: CENTRE / UPPER PAGE -->
     <div class="discography-area">
 
         <a
@@ -502,7 +402,103 @@ footer a:hover {
     </div>
 
 
-    <!-- STEP 8: FOOTER -->
+    <!-- MAIN CONTENT: BOTTOM CENTRE -->
+    <main>
+
+        <h1>GEEKIN'</h1>
+
+        <div class="byline">
+            BY MOFARITY
+        </div>
+
+
+        <!-- MUSIC PLATFORMS -->
+        <div class="music-platforms">
+
+            <!-- SPOTIFY: MOVED TO FIRST POSITION -->
+            <a
+                href="https://open.spotify.com/album/5nS7kijukEgPS9v8eAyZOo"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Spotify"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    class="spotify-icon"
+                >
+
+                    <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.49 17.307a.75.75 0 0 1-1.032.249c-2.826-1.727-6.385-2.118-10.576-1.16a.75.75 0 1 1-.334-1.462c4.587-1.048 8.52-.597 11.694 1.34a.75.75 0 0 1 .248 1.033zm1.47-3.27a.94.94 0 0 1-1.293.31c-3.235-1.99-8.17-2.567-11.998-1.404a.94.94 0 1 1-.547-1.798c4.374-1.327 9.81-.685 13.528 1.6a.94.94 0 0 1 .31 1.292zm.126-3.405C15.205 8.36 8.78 8.148 5.06 9.278a1.125 1.125 0 1 1-.654-2.153c4.27-1.296 11.37-1.045 15.84 1.61a1.125 1.125 0 0 1-1.16 1.93z"/>
+
+                </svg>
+
+            </a>
+
+
+            <!-- YOUTUBE MUSIC -->
+            <a
+                href="https://music.youtube.com/playlist?list=OLAK5uy_nkIMdv6o7lps0Z6JBtVtE2mZBW9Q8tPRQ&si=SSeKr0hLfaS0Itoa"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube Music"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    class="youtube-music-icon"
+                >
+
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 18.2a6.2 6.2 0 1 1 0-12.4 6.2 6.2 0 0 1 0 12.4zm-1.4-9.1v5.8l4.7-2.9-4.7-2.9z"/>
+
+                </svg>
+
+            </a>
+
+
+            <!-- BOOMPLAY: MOVED TO THIRD POSITION -->
+            <a
+                href="https://www.boomplay.com/share/album/EQWTr3oboUa_m3j4qHqW5Ajr"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Boomplay"
+            >
+
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Boomplay_Logo.svg"
+                    alt="Boomplay"
+                >
+
+            </a>
+
+
+            <!-- YOUTUBE -->
+            <a
+                href="https://youtube.com/playlist?list=OLAK5uy_kmaTIvjvevv5PS1iWxwcu6CXmmA33wx9o&si=5tZrEeAklRuTOw5m"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    class="youtube-icon"
+                >
+
+                    <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
+
+                </svg>
+
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
     <footer>
 
         <a
